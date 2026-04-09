@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AcademicsCharts } from "./academics-charts";
 
 const gradeLabels: Record<string, string> = {
   A_PLUS: "A+",
@@ -125,6 +126,16 @@ export default async function StudentAcademics() {
     }
   }
 
+  // Subject-level overall percentage for radar chart
+  const subjectPerformances = subjects.map((s) => {
+    const obtained = s.records.reduce((sum, r) => sum + r.marksObtained, 0);
+    const total = s.records.reduce((sum, r) => sum + r.totalMarks, 0);
+    return {
+      name: s.subject.name,
+      pct: total > 0 ? Math.round((obtained / total) * 100) : 0,
+    };
+  });
+
   return (
     <div className="space-y-6">
       {/* Page header */}
@@ -202,6 +213,10 @@ export default async function StudentAcademics() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Charts — Pie + Radar */}
+      <AcademicsCharts gradeCounts={gradeCounts} subjectPerformances={subjectPerformances} />
+
 
       {/* Subject-wise Records */}
       {subjects.map((s) => {

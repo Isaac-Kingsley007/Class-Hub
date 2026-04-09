@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AttendanceCharts } from "./attendance-charts";
 
 export default async function StudentAttendance() {
   const cookieStore = await cookies();
@@ -69,7 +70,19 @@ export default async function StudentAttendance() {
   const totalClasses = subjects.reduce((sum, s) => sum + s.total, 0);
   const totalPresent = subjects.reduce((sum, s) => sum + s.present + s.late, 0);
   const totalAbsent = subjects.reduce((sum, s) => sum + s.absent, 0);
+  const totalLate = subjects.reduce((sum, s) => sum + s.late, 0);
+  const totalExcused = subjects.reduce((sum, s) => sum + s.excused, 0);
   const overallPercentage = totalClasses > 0 ? Math.round((totalPresent / totalClasses) * 100) : 0;
+
+  // Flat daily records for the log
+  const dailyRecords = student.attendanceRecords.map((r) => ({
+    id: r.id,
+    date: r.date.toISOString(),
+    status: r.status,
+    subjectName: r.subject.name,
+    subjectCode: r.subject.code,
+    remarks: r.remarks ?? null,
+  }));
 
   function getPercentageColor(pct: number) {
     if (pct >= 75) return "text-emerald-600 dark:text-emerald-400";
@@ -222,6 +235,15 @@ export default async function StudentAttendance() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Pie Chart + Daily Attendance Log */}
+      <AttendanceCharts
+        present={totalPresent - totalLate}
+        absent={totalAbsent}
+        late={totalLate}
+        excused={totalExcused}
+        dailyRecords={dailyRecords}
+      />
     </div>
   );
 }
