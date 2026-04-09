@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Class Hub",
+  title: "Class Sync",
   description: "Student Information Management System",
 };
 

@@ -35,11 +35,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex font-sans min-h-screen flex-col items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-violet-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4">
+    <div className="flex font-sans min-h-screen flex-col items-center justify-center bg-linear-to-br from-indigo-50 via-white to-violet-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4">
 
       {/* App Branding Above Card */}
       <div className="w-full max-w-sm mb-6 flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Class Hub</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Class Sync</h1>
         <p className="text-sm text-muted-foreground mt-1">Manage your academic journey</p>
       </div>
 
@@ -92,11 +92,11 @@ export default function LoginPage() {
               </div>
             )}
             <Button
-              className="w-full h-11 text-base font-semibold shadow-md bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 transition-all"
+              className="w-full h-11 text-base font-semibold shadow-md bg-linear-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 transition-all"
               type="submit"
               disabled={isPending}
             >
-              {isPending ? "Logging in..." : "Sign in to Class Hub"}
+              {isPending ? "Logging in..." : "Sign in to Class Sync"}
             </Button>
           </form>
         </CardContent>

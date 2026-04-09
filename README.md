@@ -1,4 +1,4 @@
-# Class Hub
+# Class Sync
 
 A centralized platform for managing academic records. The system allows students to track their progress, faculty to manage classroom data, and admins to oversee the entire institution.
 
