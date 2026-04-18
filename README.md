@@ -73,4 +73,6 @@ A centralized platform for managing academic records. The system allows students
 - `pnpm build`: Builds the application for production.
 - `pnpm start`: Runs the compiled Next.js production server.
 - `pnpm lint`: Runs ESLint to catch formatting and code quality issues.
+- `pnpm test`: Runs Node.js unit tests using Vitest.
+- `pnpm test:watch`: Runs tests in watch mode during development.
 - `pnpm db:seed`: Seeds the PostgreSQL database with initial test users using Prisma.
